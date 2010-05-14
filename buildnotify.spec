@@ -1,6 +1,6 @@
 Name:		buildnotify
-Version:	0.1
-Release:	1%{?dist}
+Version:	0.2
+Release:	5%{?dist}
 Summary:	Cruise Control build monitor for Windows/Linux/Mac
 Group:		Applications/Productivity
 License:	GPLv3
@@ -19,6 +19,8 @@ servers with customizable build notifications for all projects.
 %prep
 %setup -q
 
+find %{buildroot}/%{python_sitelib} -name '*.pyc' | xargs rm -f
+
 %build
 CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 
@@ -31,7 +33,7 @@ rm -rf $RPM_BUILD_ROOT
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 %endif
 
-find %{buildroot}/%{python_sitelib} -name '*.egg' | xargs rm -f
+find %{buildroot}/%{python_sitelib} -name '*.exe' | xargs rm -f
 
 %check
 %{__python} setup.py test
