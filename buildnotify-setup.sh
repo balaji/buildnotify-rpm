@@ -2,7 +2,7 @@
 cd /tmp/
 hg clone https://bitbucket.org/Anay/buildnotify
 cd buildnotify
-hg archive -pbuildnotify-0.1 -ttgz $HOME/buildnotify.tar.gz
+hg archive -pbuildnotify-0.2 -ttgz $HOME/buildnotify.tar.gz
 rm -rf /tmp/buildnotify
 cd $HOME
 rpmdev-setuptree
