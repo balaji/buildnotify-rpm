@@ -1,0 +1,6 @@
+This project hosts the RPM spec file for the BuildNotify project. This is to create a fedora RPM file for BuildNotify.
+
+To access the actual project, please visit the following site:
+http://bitbucket.org/Anay/buildnotify
+
+BuildNotify is Cruise Control build monitor for Windows/Linux/Mac.
