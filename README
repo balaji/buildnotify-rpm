@@ -1,4 +1,4 @@
-This project hosts the RPM spec file for the BuildNotify project. This is to create a fedora RPM file for BuildNotify.
+This hosts the RPM spec file for the BuildNotify application. This is to create a fedora RPM file for BuildNotify.
 
 To access the actual project, please visit the following site:
 http://bitbucket.org/Anay/buildnotify
