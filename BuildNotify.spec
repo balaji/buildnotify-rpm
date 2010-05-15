@@ -9,7 +9,7 @@ Release:	1%{?dist}
 Summary:	Cruise Control build monitor for Windows/Linux/Mac
 Group:		Applications/Productivity
 License:	GPLv3
-URL:		http://bitbucket.org/Anay/buildnotify/
+URL:		http://bitbucket.org/Anay/buildnotify/wiki/Home
 Source0:	http://pypi.python.org/packages/source/B/BuildNotify/BuildNotify-0.2.5.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
