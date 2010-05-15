@@ -1,15 +1,22 @@
+%if ! (0%{?fedora} > 12 || 0%{?rhel} > 5)
+%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
+%{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+%endif
+
 Name:		buildnotify
-Version:	0.2
-Release:	5%{?dist}
+Version:	0.2.5
+Release:	1%{?dist}
 Summary:	Cruise Control build monitor for Windows/Linux/Mac
 Group:		Applications/Productivity
 License:	GPLv3
 URL:		http://bitbucket.org/Anay/buildnotify/
-Source0:	http://bitbucket.org/Anay/buildnotify/get/buildnotify.tar.gz
+# the source is present in bitbucket repository. The url to download the source is: 
+# http://bitbucket.org/Anay/buildnotify/get/e8d808e07c43.gz
+# currently, the source archive is prepared manually.
+Source0:	buildnotify.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
 BuildRequires:	python2-devel, pytz, python-setuptools, python-dateutil, PyQt4
-Requires:	python, pytz, python-dateutil, PyQt4
 
 %description
 BuildNotify is a cruise control system tray monitor which works on Windows/Linux/Mac. 
@@ -28,11 +35,6 @@ CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 rm -rf $RPM_BUILD_ROOT
 %{__python} setup.py install --skip-build --root $RPM_BUILD_ROOT
 
-%if ! (0%{?fedora} > 12 || 0%{?rhel} > 5)
-%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
-%{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
-%endif
-
 find %{buildroot}/%{python_sitelib} -name '*.exe' | xargs rm -f
 
 %check
@@ -48,3 +50,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/buildnotifyapplet.py
 
 %changelog
+* Tue Mar 30 2010 Anay Nayak <anayak007 at, gmail.com> 2.5-1
+- Added tag v0.2.5 for changeset 47d56dab5ea3
