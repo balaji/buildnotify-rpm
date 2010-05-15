@@ -3,17 +3,14 @@
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 %endif
 
-Name:		buildnotify
+Name:		BuildNotify
 Version:	0.2.5
 Release:	1%{?dist}
 Summary:	Cruise Control build monitor for Windows/Linux/Mac
 Group:		Applications/Productivity
 License:	GPLv3
 URL:		http://bitbucket.org/Anay/buildnotify/
-# the source is present in bitbucket repository. The url to download the source is: 
-# http://bitbucket.org/Anay/buildnotify/get/e8d808e07c43.gz
-# currently, the source archive is prepared manually.
-Source0:	buildnotify.tar.gz
+Source0:	http://pypi.python.org/packages/source/B/BuildNotify/BuildNotify-0.2.5.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
 BuildRequires:	python2-devel, pytz, python-setuptools, python-dateutil, PyQt4
@@ -27,6 +24,7 @@ servers with customizable build notifications for all projects.
 %setup -q
 
 find %{buildroot}/%{python_sitelib} -name '*.pyc' | xargs rm -f
+find %{buildroot}/%{python_sitelib} -name '*.egg-info' | xargs rm -f
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
