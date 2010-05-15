@@ -16,15 +16,16 @@ BuildArch:	noarch
 BuildRequires:	python2-devel, pytz, python-setuptools, python-dateutil, PyQt4
 
 %description
-BuildNotify is a cruise control system tray monitor which works on Windows/Linux/Mac. 
-It was largely inspired from CCMenu and lets you monitor multiple continuous integration 
-servers with customizable build notifications for all projects.
+BuildNotify is a cruise control system tray monitor which works 
+on Windows/Linux/Mac. It was largely inspired from CCMenu and 
+lets you monitor multiple continuous integration servers with 
+configurable build notifications for all projects.
 
 %prep
 %setup -q
 
-find %{buildroot}/%{python_sitelib} -name '*.pyc' | xargs rm -f
-find %{buildroot}/%{python_sitelib} -name '*.egg-info' | xargs rm -f
+find . -name '*.pyc' | xargs rm -f
+find . -name '*.egg-info' | xargs rm -rf
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
@@ -43,10 +44,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
+%doc README PKG-INFO
 %{python_sitelib}/buildnotifylib/*
 %{python_sitelib}/BuildNotify*egg-info
 %{_bindir}/buildnotifyapplet.py
 
 %changelog
-* Tue Mar 30 2010 Anay Nayak <anayak007 at, gmail.com> 2.5-1
+* Tue Mar 30 2010 Anay Nayak <anayak007 at, gmail.com> 0.2.5-1
 - Added tag v0.2.5 for changeset 47d56dab5ea3
