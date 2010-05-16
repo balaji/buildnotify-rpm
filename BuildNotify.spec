@@ -22,8 +22,6 @@ configurable build notifications for all projects.
 
 %prep
 %setup -q
-
-find . -name '*.pyc' | xargs rm -f
 find . -name '*.egg-info' | xargs rm -rf
 
 %build
@@ -32,8 +30,6 @@ CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__python} setup.py install --skip-build --root $RPM_BUILD_ROOT
-
-find %{buildroot}/%{python_sitelib} -name '*.exe' | xargs rm -f
 
 %check
 %{__python} setup.py test
