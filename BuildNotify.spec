@@ -50,5 +50,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/buildnotifyapplet.py
 
 %changelog
-* Tue Mar 30 2010 Anay Nayak <anayak007 at, gmail.com> 0.2.5-1
-- Added tag v0.2.5 for changeset 47d56dab5ea3
+* Sat May 15 2010 Anay Nayak <anayak007 at, gmail.com> 0.2.5-1
+- Initial release
